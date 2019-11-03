@@ -1,9 +1,12 @@
 import React from 'react'
-import Nav from '../components/nav'
 
-const Home: React.FC = ({}) => (
+import 'antd/dist/antd.css';
+
+import CourseList from '../components/CourseList'
+
+const Home: React.FC = ({ }) => (
   <div>
-    <Nav />
+    <CourseList />
   </div>
 );
 

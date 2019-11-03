@@ -8,6 +8,9 @@
     "start": "next start"
   },
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "antd": "^3.24.3",
+    "bem-cn": "^3.0.1",
     "next": "9.1.2",
     "react": "16.11.0",
     "react-dom": "16.11.0"
