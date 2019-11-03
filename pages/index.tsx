@@ -1,13 +1,13 @@
-import React from 'react'
+import React from 'react';
 
 import 'antd/dist/antd.css';
 
-import CourseList from '../components/CourseList'
+import CourseList from '../components/CourseList';
 
-const Home: React.FC = ({ }) => (
+const Home: React.FC = () => (
   <div>
     <CourseList />
   </div>
 );
 
-export default Home
+export default Home;

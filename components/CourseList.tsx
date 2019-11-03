@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from 'react';
 import { Table, Divider, Tag } from 'antd';
 
 const columns = [
@@ -6,7 +6,7 @@ const columns = [
     title: 'Name',
     dataIndex: 'name',
     key: 'name',
-    render: (text: string) => <a>{text}</a>,
+    render: (text: string): React.ReactNode => <div>{text}</div>,
   },
   {
     title: 'Age',
@@ -22,9 +22,9 @@ const columns = [
     title: 'Tags',
     key: 'tags',
     dataIndex: 'tags',
-    render: tags => (
+    render: (tags): React.ReactNode => (
       <span>
-        {tags.map(tag => {
+        {tags.map((tag) => {
           let color = tag.length > 5 ? 'geekblue' : 'green';
           if (tag === 'loser') {
             color = 'volcano';
@@ -41,7 +41,7 @@ const columns = [
   {
     title: 'Action',
     key: 'action',
-    render: (text, record) => (
+    render: (_, record): React.ReactNode => (
       <span>
         <a>Invite {record.name}</a>
         <Divider type="vertical" />
@@ -75,14 +75,12 @@ const data = [
   },
 ];
 
-const CourseList: React.FC = ({ }) => {
-  return (
-    <Table
-      columns={columns}
-      dataSource={data}
-    />
-  )
-};
+const CourseList: React.FC = () => (
+  <Table
+    columns={columns}
+    dataSource={data}
+  />
+);
 
 
-export default CourseList
+export default CourseList;
