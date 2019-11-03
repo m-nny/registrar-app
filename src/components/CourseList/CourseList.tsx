@@ -1,74 +1,32 @@
 import * as React from 'react';
-import { Table, Divider, Tag } from 'antd';
+import { Table } from 'antd';
+import Course from '../../models/Course';
 
 const columns = [
+  { title: 'Course ID', dataIndex: 'id', },
+  { title: 'Name', dataIndex: 'name', },
+  { title: 'Instructor', dataIndex: 'instructor', },
   {
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
-    render: (text: string): React.ReactNode => <div>{text}</div>,
-  },
-  {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
-  },
-  {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
-  },
-  {
-    title: 'Tags',
-    key: 'tags',
-    dataIndex: 'tags',
-    render: (tags): React.ReactNode => (
-      <span>
-        {tags.map((tag) => {
-          let color = tag.length > 5 ? 'geekblue' : 'green';
-          if (tag === 'loser') {
-            color = 'volcano';
-          }
-          return (
-            <Tag color={color} key={tag}>
-              {tag.toUpperCase()}
-            </Tag>
-          );
-        })}
-      </span>
-    ),
-  },
-  {
-    title: 'Action',
-    key: 'action',
-    render: (_, record): React.ReactNode => (
-      <span>
-        <a>Invite {record.name}</a>
-        <Divider type="vertical" />
-        <a>Delete</a>
-      </span>
-    ),
+    title: 'Availability', key: 'availability',
+    render: (_, r: Course): React.ReactNode => <div>{r.filled}/{r.capacity}</div>,
   },
 ];
 
-interface Row {
-    key: string
-    name: string
-    age: number
-    address: string
-    tags: string[]
-}
-
 type Props = {
-  data: Row[]
+  data: Course[]
 }
 
-const CourseList: React.FC<Props> = ({ data }: Props) => (
-  <Table
+const CourseList: React.FC<Props> = ({ data: originalData }: Props) => {
+  const data = originalData.map(course => ({
+    ...course,
+    key: course.id,
+    availability: [course.filled, course.capacity]
+  }))
+  return <Table
     columns={columns}
     dataSource={data}
   />
-);
+};
 
 
 export default CourseList;

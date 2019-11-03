@@ -27,5 +27,12 @@ module.exports = {
     "react": {
       "version": "detect"
     }
+  },
+  "overrides": {
+    "files": ['**/*.ts'],
+    "parser": '@typescript-eslint/parser',
+    "rules": {
+      'no-undef': 'off'
+    }
   }
 };
