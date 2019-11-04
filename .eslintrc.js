@@ -17,6 +17,8 @@ module.exports = {
     "lines-between-class-members": "off",
     "spaced-comment": "off",
     "react/display-name": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "no-undef": "off"
   },
   "env": {
     "browser": true,
@@ -28,11 +30,4 @@ module.exports = {
       "version": "detect"
     }
   },
-  "overrides": {
-    "files": ['**/*.ts'],
-    "parser": '@typescript-eslint/parser',
-    "rules": {
-      'no-undef': 'off'
-    }
-  }
 };
