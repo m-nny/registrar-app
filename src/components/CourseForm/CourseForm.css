@@ -1,0 +1,15 @@
+.login-form {
+    max-width: 600px;
+}
+
+.login-form__button {
+    width: 100%;
+}
+
+.login-form__forgot {
+    float: right;
+}
+
+.login-form__icon {
+    color: rgba(0,0,0,.25)
+}

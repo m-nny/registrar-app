@@ -1,4 +1,4 @@
-interface Course {
+export default interface Course {
   id: string,
   name: string,
   instructor: string,
@@ -6,7 +6,9 @@ interface Course {
   filled: number,
 }
 
-function newCourse(id: string, name: string, instructor: string, capacity: number, filled = 0): Course {
+export type CourseEventHandler = (couse: Course) => void;
+
+export function newCourse(id: string, name: string, instructor: string, capacity: number, filled = 0): Course {
   return {
     id,
     name,
@@ -14,9 +16,4 @@ function newCourse(id: string, name: string, instructor: string, capacity: numbe
     capacity,
     filled,
   }
-}
-
-export default Course;
-export {
-  newCourse,
 }

@@ -2,10 +2,7 @@ import * as React from 'react';
 import { Table, Button } from 'antd';
 import { ColumnProps } from 'antd/es/table';
 
-import Course from '../../models/Course';
-import ButtonGroup from 'antd/lib/button/button-group';
-
-type CourseEventHandler = (couse: Course) => void
+import Course, { CourseEventHandler } from '../../models/Course';
 
 interface CourseRecord extends Course {
   key: string,
@@ -24,10 +21,10 @@ const columns: ColumnProps<CourseRecord>[] = [
   {
     title: 'Action', key: 'action',
     render: (_, r) => (
-      <ButtonGroup>
+      <Button.Group>
         <Button onClick={r.onEdit}> Edit </Button>
         <Button onClick={r.onDelete} type="danger"> Delete </Button>
-      </ButtonGroup>
+      </Button.Group>
     )
   }
 ];
