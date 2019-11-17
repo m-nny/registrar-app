@@ -2,17 +2,10 @@ import React from 'react';
 
 import 'antd/dist/antd.css';
 
-import CourseList from '../components/CourseList/CourseList';
-import { fakeData } from '../components/CourseList/CourseList.stories';
+import App from '../components/App/App';
 
 const Home: React.FC = () => (
-  <div>
-    <CourseList
-      data={fakeData}
-      onDelete={() => { }}
-      onEdit={() => { }}
-    />
-  </div>
+  <App />
 );
 
 export default Home;

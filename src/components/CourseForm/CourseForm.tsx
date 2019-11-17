@@ -64,7 +64,7 @@ const NormalLoginForm: React.FC<LoginFormProps> = ({ form, onSubmit, initialValu
       <Form.Item label="Title">
         {getFieldDecorator('name', {
           rules: [{ required: true, message: 'Please enter course title' }],
-          initialValue: initialValue.name,
+          initialValue: initialValue.title,
         })(
           <Input placeholder="Calculus I" />,
         )}

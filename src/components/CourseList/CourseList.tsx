@@ -16,7 +16,7 @@ const columns: ColumnProps<CourseRecord>[] = [
   { title: 'Instructor', dataIndex: 'instructor', },
   {
     title: 'Availability', key: 'availability',
-    render: (_, r) => <div>{r.filled}/{r.capacity}</div>,
+    render: (_, r) => <div>{r.filed}/{r.capacity}</div>,
   },
   {
     title: 'Action', key: 'action',
@@ -30,9 +30,9 @@ const columns: ColumnProps<CourseRecord>[] = [
 ];
 
 type Props = {
-  data: Course[]
-  onEdit: CourseEventHandler
-  onDelete: CourseEventHandler
+  data: Course[];
+  onEdit: CourseEventHandler;
+  onDelete: CourseEventHandler;
 }
 
 const CourseList: React.FC<Props> = ({ data: originalData, onEdit, onDelete }: Props) => {
