@@ -7,6 +7,7 @@ import './CourseForm.css';
 import Course, { CourseEventHandler } from '../../models/Course';
 
 interface LoginFormProps extends FormComponentProps<Course> {
+  initialValue?: Partial<Course>
   onSubmit: CourseEventHandler
 }
 
@@ -35,7 +36,7 @@ const tailFormItemLayout = {
   },
 };
 
-const NormalLoginForm: React.FC<LoginFormProps> = ({ form, onSubmit }: LoginFormProps) => {
+const NormalLoginForm: React.FC<LoginFormProps> = ({ form, onSubmit, initialValue = {} }: LoginFormProps) => {
   const handleSubmit: React.FormEventHandler = e => {
     e.preventDefault();
     form.validateFields((err, values) => {
@@ -55,6 +56,7 @@ const NormalLoginForm: React.FC<LoginFormProps> = ({ form, onSubmit }: LoginForm
       <Form.Item label="ID">
         {getFieldDecorator('id', {
           rules: [{ required: true, message: 'Please enter course ID' }],
+          initialValue: initialValue.id,
         })(
           <Input placeholder="MATH101" />,
         )}
@@ -62,6 +64,7 @@ const NormalLoginForm: React.FC<LoginFormProps> = ({ form, onSubmit }: LoginForm
       <Form.Item label="Title">
         {getFieldDecorator('name', {
           rules: [{ required: true, message: 'Please enter course title' }],
+          initialValue: initialValue.name,
         })(
           <Input placeholder="Calculus I" />,
         )}
@@ -69,6 +72,7 @@ const NormalLoginForm: React.FC<LoginFormProps> = ({ form, onSubmit }: LoginForm
       <Form.Item label="Instructor">
         {getFieldDecorator('instructor', {
           rules: [{ required: true, message: 'Please enter instructor name' }],
+          initialValue: initialValue.instructor,
         })(
           <Input placeholder="TBA" />,
         )}
@@ -76,6 +80,7 @@ const NormalLoginForm: React.FC<LoginFormProps> = ({ form, onSubmit }: LoginForm
       <Form.Item label="Capacity">
         {getFieldDecorator('capacity', {
           rules: [{ required: true, message: 'Please enter capacity' }],
+          initialValue: initialValue.capacity,
         })(
           <InputNumber min={1} />,
         )}
