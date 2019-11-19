@@ -35,6 +35,7 @@ const tailFormItemLayout = {
     },
   },
 };
+// abbreviation must be a string, title must be a string, instructor must be a string, capacity must not be less than 1,capacity must be an integer number
 
 const NormalLoginForm: React.FC<LoginFormProps> = ({ form, onSubmit, initialValue = {} }: LoginFormProps) => {
   const handleSubmit: React.FormEventHandler = e => {
@@ -53,16 +54,16 @@ const NormalLoginForm: React.FC<LoginFormProps> = ({ form, onSubmit, initialValu
   const { getFieldDecorator } = form;
   return (
     <Form {...formItemLayout} onSubmit={handleSubmit} className={b()}>
-      <Form.Item label="ID">
-        {getFieldDecorator('id', {
-          rules: [{ required: true, message: 'Please enter course ID' }],
-          initialValue: initialValue.id,
+      <Form.Item label="Abbreviation">
+        {getFieldDecorator('abbreviation', {
+          rules: [{ required: true, message: 'Please enter course abbreviation' }],
+          initialValue: initialValue.abberiation,
         })(
           <Input placeholder="MATH101" />,
         )}
       </Form.Item>
       <Form.Item label="Title">
-        {getFieldDecorator('name', {
+        {getFieldDecorator('title', {
           rules: [{ required: true, message: 'Please enter course title' }],
           initialValue: initialValue.title,
         })(
