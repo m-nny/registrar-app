@@ -11,6 +11,11 @@
     "start": "next start -p $PORT",
     "storybook": "start-storybook -p 9009 -s public"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
     "antd": "^3.24.3",
