@@ -8,18 +8,15 @@ import Course from '../models/Course';
 import { getCourses } from '../api/routes';
 
 interface Props {
-  coursesList: Course[]
+    coursesList: Course[];
 }
 
-const Home: NextPage<Props> = ({coursesList}) => (
-  <App coursesList={coursesList} />
-);
+const Home: NextPage<Props> = ({ coursesList }) => <App coursesList={coursesList} />;
 
-Home.getInitialProps = async(ctx) => {
+Home.getInitialProps = async () => {
+    const coursesList = await getCourses();
 
-  const coursesList = await getCourses();
-
-  return {coursesList};
-}
+    return { coursesList };
+};
 
 export default Home;

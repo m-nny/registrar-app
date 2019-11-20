@@ -11,41 +11,47 @@ interface CourseRecord extends Course {
 }
 
 const columns: ColumnProps<CourseRecord>[] = [
-  { title: 'Abbreviation', dataIndex: 'abbreviation', },
-  { title: 'Title', dataIndex: 'title', },
-  { title: 'Instructor', dataIndex: 'instructor', },
-  {
-    title: 'Availability', key: 'availability',
-    render: (_, r) => <div>{r.enrolled}/{r.capacity}</div>,
-  },
-  {
-    title: 'Action', key: 'action',
-    render: (_, r) => (
-      <Button.Group>
-        <Button onClick={r.onEdit}> Edit </Button>
-        <Button onClick={r.onDelete} type="danger"> Delete </Button>
-      </Button.Group>
-    )
-  }
+    { title: 'Abbreviation', dataIndex: 'abbreviation' },
+    { title: 'Title', dataIndex: 'title' },
+    { title: 'Instructor', dataIndex: 'instructor' },
+    {
+        title: 'Availability',
+        key: 'availability',
+        render: (_, r) => (
+            <div>
+                {r.enrolled}/{r.capacity}
+            </div>
+        ),
+    },
+    {
+        title: 'Action',
+        key: 'action',
+        render: (_, r) => (
+            <Button.Group>
+                <Button onClick={r.onEdit}> Edit </Button>
+                <Button onClick={r.onDelete} type="danger">
+                    {' '}
+                    Delete{' '}
+                </Button>
+            </Button.Group>
+        ),
+    },
 ];
 
 type Props = {
-  data: Course[];
-  onEdit: CourseEventHandler;
-  onDelete: CourseEventHandler;
-}
+    data: Course[];
+    onEdit: CourseEventHandler;
+    onDelete: CourseEventHandler;
+};
 
 const CourseList: React.FC<Props> = ({ data: originalData, onEdit, onDelete }: Props) => {
-  const data: CourseRecord[] = originalData.map(course => ({
-    ...course,
-    key: course._id,
-    onEdit: () => onEdit(course),
-    onDelete: () => onDelete(course),
-  }))
-  return <Table<CourseRecord>
-    columns={columns}
-    dataSource={data}
-  />
+    const data: CourseRecord[] = originalData.map(course => ({
+        ...course,
+        key: course._id,
+        onEdit: () => onEdit(course),
+        onDelete: () => onDelete(course),
+    }));
+    return <Table<CourseRecord> columns={columns} dataSource={data} />;
 };
 
 export default CourseList;

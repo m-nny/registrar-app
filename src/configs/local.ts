@@ -1,7 +1,5 @@
-import { OverrideConfig } from ".";
+import { OverrideConfig } from '.';
 
-const localConfig: OverrideConfig = {
-
-}
+const localConfig: OverrideConfig = {};
 
 export default localConfig;
