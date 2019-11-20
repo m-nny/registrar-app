@@ -1,4 +1,4 @@
-import { request } from './utils';
+import request from './utils';
 import Course, { NewCourse } from '../models/Course';
 
 export const getCourses = async () => request.get<Course[]>('/courses').then(({ data }) => data);
