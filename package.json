@@ -5,15 +5,18 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "lint": "npm run lint:fix && npm run lint:run",
-    "lint:run": "eslint . --color --format codeframe --ext .ts,.tsx",
-    "lint:fix": "eslint . --ext .ts,.tsx --fix",
+    "lint": "eslint .",
+    "lint:write": "eslint . --color --format codeframe --ext .ts,.tsx --fix",
+    "prettier": "prettier --write src/**/*.ts*",
     "start": "next start -p $PORT",
     "storybook": "start-storybook -p 9009 -s public"
   },
+  "lint-staged": {
+    "*.(js|jsx)": ["npm run lint:write", "git add"]
+  },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint"
+      "pre-commit": "lint-staged"
     }
   },
   "dependencies": {
