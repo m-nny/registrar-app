@@ -7,49 +7,53 @@ import './CourseForm.css';
 import Course, { CourseEventHandler } from '../../models/Course';
 
 interface LoginFormProps extends FormComponentProps<Course> {
-  initialValue?: Partial<Course>
-  onSubmit: CourseEventHandler
+    initialValue?: Partial<Course>;
+    onSubmit: CourseEventHandler;
 }
 
 const b = block('login-form');
 
 const formItemLayout = {
-  labelCol: {
-    xs: { span: 24 },
-    sm: { span: 8 },
-  },
-  wrapperCol: {
-    xs: { span: 24 },
-    sm: { span: 16 },
-  },
+    labelCol: {
+        xs: { span: 24 },
+        sm: { span: 8 },
+    },
+    wrapperCol: {
+        xs: { span: 24 },
+        sm: { span: 16 },
+    },
 };
 const tailFormItemLayout = {
-  wrapperCol: {
-    xs: {
-      span: 24,
-      offset: 0,
+    wrapperCol: {
+        xs: {
+            span: 24,
+            offset: 0,
+        },
+        sm: {
+            span: 16,
+            offset: 8,
+        },
     },
-    sm: {
-      span: 16,
-      offset: 8,
-    },
-  },
 };
 // abbreviation must be a string, title must be a string, instructor must be a string, capacity must not be less than 1,capacity must be an integer number
 
-const NormalLoginForm: React.FC<LoginFormProps> = ({ form, onSubmit, initialValue = {} }: LoginFormProps) => {
-  const handleSubmit: React.FormEventHandler = e => {
-    e.preventDefault();
-    form.validateFields((err, values) => {
-      if (err) {
-        return
-      }
-      const course: Course = Object.assign(values, {
-        filled: 0,
-      })
-      onSubmit(course);
-    });
-  };
+const NormalLoginForm: React.FC<LoginFormProps> = ({
+    form,
+    onSubmit,
+    initialValue = {},
+}: LoginFormProps) => {
+    const handleSubmit: React.FormEventHandler = e => {
+        e.preventDefault();
+        form.validateFields((err, values) => {
+            if (err) {
+                return;
+            }
+            const course: Course = Object.assign(values, {
+                filled: 0,
+            });
+            onSubmit(course);
+        });
+    };
 
   const { getFieldDecorator } = form;
   return (
@@ -95,6 +99,8 @@ const NormalLoginForm: React.FC<LoginFormProps> = ({ form, onSubmit, initialValu
   );
 }
 
-const WrappedNormalLoginForm = Form.create<LoginFormProps>({ name: 'normal_login' })(NormalLoginForm);
+const WrappedNormalLoginForm = Form.create<LoginFormProps>({ name: 'normal_login' })(
+    NormalLoginForm,
+);
 
 export default WrappedNormalLoginForm;

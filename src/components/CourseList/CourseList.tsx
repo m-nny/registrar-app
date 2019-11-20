@@ -5,9 +5,9 @@ import { ColumnProps } from 'antd/es/table';
 import Course, { CourseEventHandler } from '../../models/Course';
 
 interface CourseRecord extends Course {
-  key: string,
-  onEdit: React.MouseEventHandler<HTMLButtonElement>,
-  onDelete: React.MouseEventHandler<HTMLButtonElement>,
+    key: string;
+    onEdit: React.MouseEventHandler<HTMLButtonElement>;
+    onDelete: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const columns: ColumnProps<CourseRecord>[] = [
@@ -47,6 +47,5 @@ const CourseList: React.FC<Props> = ({ data: originalData, onEdit, onDelete }: P
     dataSource={data}
   />
 };
-
 
 export default CourseList;

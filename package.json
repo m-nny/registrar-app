@@ -5,9 +5,16 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "lint": "eslint . --ext .ts,.tsx",
+    "lint": "npm run lint:fix && npm run lint:run",
+    "lint:run": "eslint . --ext .ts,.tsx",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix",
     "start": "next start -p $PORT",
     "storybook": "start-storybook -p 9009 -s public"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run lint"
+    }
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
@@ -33,9 +40,12 @@
     "@typescript-eslint/parser": "^2.6.0",
     "babel-loader": "^8.0.6",
     "eslint": "^6.6.0",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-config-prettier": "^6.5.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.16.0",
+    "prettier": "^1.19.1",
     "typescript": "^3.6.4"
   }
 }
