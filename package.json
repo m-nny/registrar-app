@@ -1,56 +1,56 @@
 {
-  "name": "registrar-app",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "build": "next build",
-    "dev": "next dev",
-    "lint": "eslint .",
-    "lint:write": "eslint . --color --format codeframe --ext .ts,.tsx --fix",
-    "prettier": "prettier --write src/**/*.ts*",
-    "start": "next start -p $PORT",
-    "storybook": "start-storybook -p 9009 -s public"
-  },
-  "lint-staged": {
-    " src/**/*.(ts|tsx)": [
-      "npm run lint:write",
-      "git add"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
+    "name": "registrar-app",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "build": "next build",
+        "dev": "next dev",
+        "lint": "eslint .",
+        "lint:write": "eslint . --color --format codeframe --ext .ts,.tsx --fix",
+        "prettier": "prettier --write src/**/*.ts*",
+        "start": "next start -p $PORT",
+        "storybook": "start-storybook -p 9009 -s public"
+    },
+    "lint-staged": {
+        "*": [
+            "npm run lint:write",
+            "git add"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "dependencies": {
+        "antd": "^3.24.3",
+        "bem-cn": "^3.0.1",
+        "next": "9.1.2",
+        "react": "16.11.0",
+        "react-dom": "16.11.0",
+        "webpack": "^4.41.2",
+        "@storybook/addon-actions": "^5.2.5",
+        "@storybook/addons": "^5.2.5",
+        "@storybook/react": "^5.2.5"
+    },
+    "devDependencies": {
+        "@types/next": "^8.0.6",
+        "@types/node": "^12.12.5",
+        "@types/react": "^16.9.11",
+        "@types/react-dom": "^16.9.3",
+        "@typescript-eslint/eslint-plugin": "^2.8.0",
+        "@typescript-eslint/parser": "^2.6.0",
+        "@zeit/next-css": "^1.0.1",
+        "babel-loader": "^8.0.6",
+        "eslint": "^6.6.0",
+        "eslint-config-airbnb-base": "^14.0.0",
+        "eslint-config-prettier": "^6.7.0",
+        "eslint-plugin-import": "^2.18.2",
+        "eslint-plugin-prettier": "^3.1.1",
+        "eslint-plugin-react": "^7.16.0",
+        "prettier": "^1.19.1",
+        "typescript": "^3.6.4",
+        "husky": "^1.1.2",
+        "lint-staged": "^7.3.0"
     }
-  },
-  "dependencies": {
-    "antd": "^3.24.3",
-    "bem-cn": "^3.0.1",
-    "next": "9.1.2",
-    "react": "16.11.0",
-    "react-dom": "16.11.0",
-    "webpack": "^4.41.2",
-    "@storybook/addon-actions": "^5.2.5",
-    "@storybook/addons": "^5.2.5",
-    "@storybook/react": "^5.2.5"
-  },
-  "devDependencies": {
-    "@types/next": "^8.0.6",
-    "@types/node": "^12.12.5",
-    "@types/react": "^16.9.11",
-    "@types/react-dom": "^16.9.3",
-    "@typescript-eslint/eslint-plugin": "^2.8.0",
-    "@typescript-eslint/parser": "^2.6.0",
-    "@zeit/next-css": "^1.0.1",
-    "babel-loader": "^8.0.6",
-    "eslint": "^6.6.0",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-config-prettier": "^6.7.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-prettier": "^3.1.1",
-    "eslint-plugin-react": "^7.16.0",
-    "prettier": "^1.19.1",
-    "typescript": "^3.6.4",
-    "husky": "^1.1.2",
-    "lint-staged": "^7.3.0"
-  }
 }
