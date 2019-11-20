@@ -12,14 +12,14 @@
     "storybook": "start-storybook -p 9009 -s public"
   },
   "lint-staged": {
-    "*.(ts|tsx)": [
+    " src/**/*.(ts|tsx)": [
       "npm run lint:write",
       "git add"
     ]
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint:write"
+      "pre-commit": "lint-staged"
     }
   },
   "dependencies": {
