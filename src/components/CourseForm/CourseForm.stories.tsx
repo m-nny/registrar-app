@@ -6,7 +6,7 @@ import CourseForm from './CourseForm';
 
 import Course, { newCourse } from '../../models/Course';
 
-export const fakeCourse: Course = newCourse('MATH101', 'Calculus I', 'TBA', 40, 4);
+const fakeCourse: Course = newCourse('MATH101', 'Calculus I', 'TBA', 40, 4);
 
 const events = actions('onSubmit');
 
@@ -18,3 +18,5 @@ storiesOf('CourseForm', module)
     ))
     .add('empty', () => <CourseForm {...events} />)
     .add('MATH101', () => <CourseForm initialValue={fakeCourse} {...events} />);
+
+export default fakeCourse;

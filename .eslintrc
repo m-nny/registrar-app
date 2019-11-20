@@ -1,6 +1,6 @@
 {
   "extends": [
-    // "airbnb-base",
+    "airbnb-base",
     "prettier",
     "prettier/react",
     "prettier/@typescript-eslint",
@@ -24,7 +24,9 @@
 
     "no-var": 2,
     "import/no-unresolved": 0,
-    "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }]
+    "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
+    "prefer-default-export": 0,
+    "no-underscore-dangle": 0
   },
   "env": {
     "browser": true,

@@ -2,8 +2,8 @@ import React from 'react';
 
 import 'antd/dist/antd.css';
 
-import App from '../components/App/App';
 import { NextPage } from 'next';
+import App from '../components/App/App';
 import Course from '../models/Course';
 import { getCourses } from '../api/routes';
 
