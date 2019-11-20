@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Table, Button } from 'antd';
 import { ColumnProps } from 'antd/es/table';
 
@@ -30,8 +30,7 @@ const columns: ColumnProps<CourseRecord>[] = [
             <Button.Group>
                 <Button onClick={r.onEdit}> Edit </Button>
                 <Button onClick={r.onDelete} type="danger">
-                    {' '}
-                    Delete{' '}
+                    Delete
                 </Button>
             </Button.Group>
         ),

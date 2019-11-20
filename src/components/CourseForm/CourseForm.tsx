@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Form, Input, InputNumber, Button } from 'antd';
 import { FormComponentProps } from 'antd/es/form';
 import { block } from 'bem-cn';
