@@ -17,7 +17,6 @@
     }
   },
   "dependencies": {
-    "@zeit/next-css": "^1.0.1",
     "antd": "^3.24.3",
     "bem-cn": "^3.0.1",
     "next": "9.1.2",
@@ -33,11 +32,11 @@
     "@types/node": "^12.12.5",
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.9.3",
-    "@typescript-eslint/eslint-plugin": "^2.6.0",
+    "@typescript-eslint/eslint-plugin": "^2.8.0",
     "@typescript-eslint/parser": "^2.6.0",
+    "@zeit/next-css": "^1.0.1",
     "babel-loader": "^8.0.6",
     "eslint": "^6.6.0",
-    "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-prettier": "^3.1.1",

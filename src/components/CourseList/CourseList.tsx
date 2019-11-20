@@ -30,8 +30,7 @@ const columns: ColumnProps<CourseRecord>[] = [
             <Button.Group>
                 <Button onClick={r.onEdit}> Edit </Button>
                 <Button onClick={r.onDelete} type="danger">
-                    {' '}
-                    Delete{' '}
+                    Delete
                 </Button>
             </Button.Group>
         ),
