@@ -5,14 +5,14 @@
     "scripts": {
         "build": "next build",
         "dev": "next dev",
-        "lint": "eslint .",
+        "lint": "eslint . --ext .ts,.tsx",
         "lint:write": "eslint . --color --format codeframe --ext .ts,.tsx --fix",
         "prettier": "prettier --write src/**/*.ts*",
         "start": "next start -p $PORT",
         "storybook": "start-storybook -p 9009 -s public"
     },
     "lint-staged": {
-      "*.{ts,tsx,js}": : [
+      "*.{ts,tsx,js}": [
             "npm run lint:write",
             "git add"
         ]
