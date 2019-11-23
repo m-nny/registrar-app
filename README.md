@@ -5,7 +5,7 @@
 ## Contributing
 
 
-### Starts the next server and monitors changes**
+### Starts the next server
 
 ```npm run dev```
 
