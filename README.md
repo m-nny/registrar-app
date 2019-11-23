@@ -5,7 +5,7 @@
 ## Contributing
 
 
-### Starts the next server
+### Start the next server
 
 ```npm run dev```
 
