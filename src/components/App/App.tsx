@@ -17,8 +17,8 @@ const App: FC<Props> = ({ coursesList }) => {
         editCourses(course.abberiation, {});
     };
 
-    const onSubmit = async (course: NewCourse) => {
-        await createCourse(course);
+    const onSubmit = (course: NewCourse) => {
+        createCourse(course);
     };
     return (
         <div style={{ marginTop: 50 }} className="container">
