@@ -13,7 +13,7 @@
     "prettier"
   ],
   "rules": {
-    "prettier/prettier": 2,
+    "prettier/prettier": 1,
 
     "@typescript-eslint/explicit-function-return-type": 0,
     "lines-between-class-members": 0,
