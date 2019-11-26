@@ -1,7 +1,5 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-// next.config.js
-const withCSS = require('@zeit/next-css');
+import withCSS from '@zeit/next-css';
 
-module.exports = withCSS({
+export default withCSS({
     /* config options here */
 });

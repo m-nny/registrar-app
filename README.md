@@ -1,11 +1,11 @@
-# Regestry App: Front-end
+# Regestrar app
+
+![](https://github.com/m-nny/registrar-app/workflows/Node%20CI/badge.svg)
 
 ## Contributing
 
-For local developing follow this steps:
 
-
-### Starts the next server and monitors changes**
+### Start the next server
 
 ```npm run dev```
 
@@ -20,7 +20,7 @@ For local developing follow this steps:
 ```npm run lint```
 
 
-**Fix problems**
+**Fix**
 
 ```npm run lint:write```
 
