@@ -3,7 +3,7 @@ import { Form, Input, InputNumber, Button } from 'antd';
 import { FormComponentProps } from 'antd/es/form';
 import { block } from 'bem-cn';
 
-import './CourseForm.css';
+import './CourseForm.scss';
 import Course, { CourseEventHandler } from '../../models/Course';
 
 interface LoginFormProps extends FormComponentProps<Course> {

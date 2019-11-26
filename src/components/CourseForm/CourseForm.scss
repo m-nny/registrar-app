@@ -1,0 +1,12 @@
+.login-form {
+    max-width: 600px;
+    &__button {
+        width: 100%;
+    }
+    &__forgot {
+        float: right;
+    }
+    &__icon {
+        color: rgba(0, 0, 0, 0.25);
+    }
+}

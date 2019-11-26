@@ -3,7 +3,7 @@ import { createCourse, editCourses, removeCourse } from '../../api/routes';
 import Course, { NewCourse } from '../../models/Course';
 import WrappedNormalLoginForm from '../CourseForm/CourseForm';
 import CourseList from '../CourseList/CourseList';
-import './App.css';
+import './App.scss';
 
 interface Props {
     coursesList: Course[];
