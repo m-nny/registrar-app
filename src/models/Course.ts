@@ -1,25 +1,29 @@
 export default interface Course {
-    id: string;
-    name: string;
+    _id: string;
+    abberiation: string;
+    title: string;
     instructor: string;
     capacity: number;
-    filled: number;
+    enrolled: number;
 }
 
-export type CourseEventHandler = (couse: Course) => void;
+export type NewCourse = Omit<Course, '_id'>;
+
+export type CourseEventHandler = (course: Course) => void;
 
 export function newCourse(
-    id: string,
-    name: string,
+    abberiation: string,
+    title: string,
     instructor: string,
     capacity: number,
-    filled = 0,
+    enrolled = 0,
 ): Course {
     return {
-        id,
-        name,
+        _id: abberiation,
+        abberiation,
+        title,
         instructor,
         capacity,
-        filled,
+        enrolled,
     };
 }

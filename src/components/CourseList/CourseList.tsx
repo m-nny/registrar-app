@@ -11,15 +11,15 @@ interface CourseRecord extends Course {
 }
 
 const columns: ColumnProps<CourseRecord>[] = [
-    { title: 'Course ID', dataIndex: 'id' },
-    { title: 'Name', dataIndex: 'name' },
+    { title: 'Abbreviation', dataIndex: 'abbreviation' },
+    { title: 'Title', dataIndex: 'title' },
     { title: 'Instructor', dataIndex: 'instructor' },
     {
         title: 'Availability',
         key: 'availability',
         render: (_, r) => (
             <div>
-                {r.filled}/{r.capacity}
+                {r.enrolled}/{r.capacity}
             </div>
         ),
     },
@@ -46,7 +46,7 @@ type Props = {
 const CourseList: React.FC<Props> = ({ data: originalData, onEdit, onDelete }: Props) => {
     const data: CourseRecord[] = originalData.map(course => ({
         ...course,
-        key: course.id,
+        key: course._id,
         onEdit: () => onEdit(course),
         onDelete: () => onDelete(course),
     }));
