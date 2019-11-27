@@ -2,7 +2,7 @@ import React from 'react';
 import { Table, Button } from 'antd';
 import { ColumnProps } from 'antd/es/table';
 
-import Course, { CourseEventHandler } from '../../models/Course';
+import { EditCourse, Course } from '../../store/courses/types';
 
 interface CourseRecord extends Course {
     key: string;
@@ -37,18 +37,22 @@ const columns: ColumnProps<CourseRecord>[] = [
     },
 ];
 
-type Props = {
+export interface CourseListProps {
     data: Course[];
-    onEdit: CourseEventHandler;
-    onDelete: CourseEventHandler;
-};
+    onEdit: (props: EditCourse) => void;
+    onDelete: (id: string) => void;
+}
 
-const CourseList: React.FC<Props> = ({ data: originalData, onEdit, onDelete }: Props) => {
+const CourseList: React.FC<CourseListProps> = ({
+    data: originalData,
+    onEdit,
+    onDelete,
+}: CourseListProps) => {
     const data: CourseRecord[] = originalData.map(course => ({
         ...course,
         key: course._id,
-        onEdit: () => onEdit(course),
-        onDelete: () => onDelete(course),
+        onEdit: () => onEdit({ _id: course._id }),
+        onDelete: () => onDelete(course._id),
     }));
     return <Table<CourseRecord> columns={columns} dataSource={data} />;
 };

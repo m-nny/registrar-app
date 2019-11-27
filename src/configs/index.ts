@@ -1,15 +1,8 @@
 import { merge } from 'lodash';
+import { DeepPartial } from 'utility-types';
 import defaultConfig from './default';
 import localConfig from './local';
 import stableConfig from './stable';
-
-type DeepPartial<T> = {
-    [P in keyof T]?: T[P] extends Array<infer U>
-        ? Array<DeepPartial<U>>
-        : T[P] extends ReadonlyArray<infer U>
-        ? ReadonlyArray<DeepPartial<U>>
-        : DeepPartial<T[P]>;
-};
 
 export type Config = typeof defaultConfig;
 export type OverrideConfig = DeepPartial<Config>;

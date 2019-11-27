@@ -3,13 +3,18 @@ import { storiesOf } from '@storybook/react';
 import { actions } from '@storybook/addon-actions';
 
 import CourseList from './CourseList';
-
-import Course, { newCourse } from '../../models/Course';
+import { Course } from '../../store/courses/types';
+import { createCourse } from '../../libs/storybook';
 
 const fakeData: Course[] = [
-    newCourse('MATH101', 'Calculus I', 'TBA', 40, 4),
-    newCourse('PHYS101', 'Physics I', 'TBA', 200, 20),
-    newCourse('CSCI151', 'Programming for Sc...', 'TBA', 150),
+    createCourse({ abberiation: 'MATH101', title: 'Calculus I', instructor: 'TBA', capacity: 40 }),
+    createCourse({ abberiation: 'PHYS101', title: 'Physics I', instructor: 'TBA', capacity: 200 }),
+    createCourse({
+        abberiation: 'CSCI151',
+        title: 'Programming',
+        instructor: 'TBA',
+        capacity: 150,
+    }),
 ];
 
 const events = actions('onEdit', 'onDelete');

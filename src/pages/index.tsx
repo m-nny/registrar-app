@@ -1,22 +1,19 @@
-import React from 'react';
-
-import 'antd/dist/antd.css';
-
 import { NextPage } from 'next';
-import App from '../components/App/App';
-import Course from '../models/Course';
+import React from 'react';
 import { getCourses } from '../api/routes';
+import App from '../components/App/App';
+import { initialCourseList } from '../store/courses/actions';
+import { PageCtx } from '../types/next';
 
-interface Props {
-    coursesList: Course[];
-}
+const Index: NextPage = () => {
+    return <App />;
+};
 
-const Home: NextPage<Props> = ({ coursesList }) => <App coursesList={coursesList} />;
-
-Home.getInitialProps = async () => {
+Index.getInitialProps = async ({ store }: PageCtx) => {
+    // TODO: обратывать ошибки
     const coursesList = await getCourses();
-
+    store.dispatch(initialCourseList(coursesList));
     return { coursesList };
 };
 
-export default Home;
+export default Index;

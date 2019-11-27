@@ -1,43 +1,19 @@
-import React from 'react';
-import { Form, Input, InputNumber, Button } from 'antd';
+import { Button, Form, Input, InputNumber } from 'antd';
 import { FormComponentProps } from 'antd/es/form';
 import { block } from 'bem-cn';
-
+import React from 'react';
+import { Course, CreateCourse } from '../../store/courses/types';
 import './CourseForm.scss';
-import Course, { CourseEventHandler } from '../../models/Course';
+import { formItemLayout, tailFormItemLayout } from './layout';
 
 interface LoginFormProps extends FormComponentProps<Course> {
-    initialValue?: Partial<Course>;
-    onSubmit: CourseEventHandler;
+    initialValue?: Partial<CreateCourse>;
+    onSubmit: (course: CreateCourse) => void;
 }
 
 const b = block('login-form');
 
-const formItemLayout = {
-    labelCol: {
-        xs: { span: 24 },
-        sm: { span: 8 },
-    },
-    wrapperCol: {
-        xs: { span: 24 },
-        sm: { span: 16 },
-    },
-};
-const tailFormItemLayout = {
-    wrapperCol: {
-        xs: {
-            span: 24,
-            offset: 0,
-        },
-        sm: {
-            span: 16,
-            offset: 8,
-        },
-    },
-};
-// abbreviation must be a string, title must be a string, instructor must be a string, capacity must not be less than 1,capacity must be an integer number
-
-const NormalLoginForm: React.FC<LoginFormProps> = ({
+const CreateCourseForm: React.FC<LoginFormProps> = ({
     form,
     onSubmit,
     initialValue = {},
@@ -48,14 +24,14 @@ const NormalLoginForm: React.FC<LoginFormProps> = ({
             if (err) {
                 return;
             }
-            const course: Course = Object.assign(values, {
-                filled: 0,
-            });
+            const course: Course = values;
             onSubmit(course);
+            form.resetFields();
         });
     };
 
     const { getFieldDecorator } = form;
+
     return (
         <Form {...formItemLayout} onSubmit={handleSubmit} className={b()}>
             <Form.Item label="Abbreviation">
@@ -83,7 +59,7 @@ const NormalLoginForm: React.FC<LoginFormProps> = ({
                 })(<InputNumber min={1} />)}
             </Form.Item>
             <Form.Item {...tailFormItemLayout}>
-                <Button type="primary" htmlType="submit" className={b('button').toString()}>
+                <Button type="primary" htmlType="submit" className={b('button')}>
                     Confirm
                 </Button>
             </Form.Item>
@@ -91,8 +67,6 @@ const NormalLoginForm: React.FC<LoginFormProps> = ({
     );
 };
 
-const WrappedNormalLoginForm = Form.create<LoginFormProps>({ name: 'normal_login' })(
-    NormalLoginForm,
-);
+const CreateCourseFormWrapper = Form.create<LoginFormProps>()(CreateCourseForm);
 
-export default WrappedNormalLoginForm;
+export default CreateCourseFormWrapper;

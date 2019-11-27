@@ -3,10 +3,15 @@ import { storiesOf } from '@storybook/react';
 import { actions } from '@storybook/addon-actions';
 
 import CourseForm from './CourseForm';
+import { Course } from '../../store/courses/types';
+import { createCourse } from '../../libs/storybook';
 
-import Course, { newCourse } from '../../models/Course';
-
-const fakeCourse: Course = newCourse('MATH101', 'Calculus I', 'TBA', 40, 4);
+const fakeCourse: Course = createCourse({
+    abberiation: 'MATH101',
+    title: 'Calculus I',
+    instructor: 'TBA',
+    capacity: 40,
+});
 
 const events = actions('onSubmit');
 
