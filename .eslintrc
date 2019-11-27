@@ -21,9 +21,11 @@
 
         "no-var": 2,
         "import/no-unresolved": 0,
+        "import/no-extraneous-dependencies": 0,
         "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
         "no-underscore-dangle": 0,
-        "no-case-declarations": 0
+        "no-case-declarations": 0,
+        "no-extraneous-dependencies": 0
     },
     "env": {
         "browser": true,

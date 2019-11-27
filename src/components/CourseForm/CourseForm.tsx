@@ -24,9 +24,9 @@ const CreateCourseForm: React.FC<LoginFormProps> = ({
             if (err) {
                 return;
             }
+            form.resetFields();
             const course: Course = values;
             onSubmit(course);
-            form.resetFields();
         });
     };
 
