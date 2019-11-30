@@ -1,8 +1,8 @@
 import { DeepPartial } from 'utility-types';
 
 export interface Course {
-    _id: string;
-    abberiation: string;
+    id: string;
+    abbreviation: string;
     title: string;
     instructor: string;
     capacity: number;
@@ -10,7 +10,7 @@ export interface Course {
 }
 
 export interface EditCourse extends DeepPartial<Course> {
-    _id: string;
+    id: string;
 }
 
-export type CreateCourse = Omit<Course, '_id' | 'enrolled'>;
+export type CreateCourse = Omit<Course, 'id' | 'enrolled'>;

@@ -25,7 +25,9 @@
         "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
         "no-underscore-dangle": 0,
         "no-case-declarations": 0,
-        "no-extraneous-dependencies": 0
+        "no-extraneous-dependencies": 0,
+        "no-nested-ternary": 0,
+        "no-console": 0
     },
     "env": {
         "browser": true,

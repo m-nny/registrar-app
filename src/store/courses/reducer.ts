@@ -1,33 +1,26 @@
-import { ActionType, getType, Reducer } from 'typesafe-actions';
+import { ActionType, createReducer } from 'typesafe-actions';
 import { addCourseAsync, editCourseAsync, initialCourseList, removeCourseAsync } from './actions';
 import { Course } from './types';
 
-export type CoursesAction = ActionType<typeof import('./actions')>;
+export default createReducer<Course[], ActionType<typeof import('./actions')>>([])
+    .handleAction(initialCourseList, (_, { payload }) => payload)
 
-const reducer: Reducer<Course[], CoursesAction> = (state = [], action) => {
-    // TODO: use immutableJS
-    switch (action.type) {
-        case getType(addCourseAsync.success):
-            return [...state, action.payload];
+    .handleAction(addCourseAsync.success, (state, { payload }) => [...state, payload])
 
-        case getType(editCourseAsync.success):
-            const course = state.filter(s => s._id === action.payload._id)[0];
-            const index = state.indexOf(course);
-            return [
-                ...state.splice(0, index),
-                { ...course, ...action.payload },
-                ...state.splice(index + 1),
-            ];
+    .handleAction(editCourseAsync.success, (state, { payload }) => {
+        const course = state.filter(s => s.id === payload.id)[0];
+        const index = state.indexOf(course);
+        return [...state.splice(0, index), { ...course, ...payload }, ...state.splice(index + 1)];
+    })
 
-        case getType(removeCourseAsync.success):
-            return state.filter(({ _id }) => _id !== action.payload);
+    .handleAction(removeCourseAsync.success, (state, { payload }) =>
+        state.filter(({ id }) => id !== payload),
+    )
 
-        case getType(initialCourseList):
-            return action.payload;
-
-        default:
+    .handleAction(
+        [addCourseAsync.failure, editCourseAsync.failure, removeCourseAsync.failure],
+        state => {
+            // TODO: handling
             return state;
-    }
-};
-
-export default reducer;
+        },
+    );

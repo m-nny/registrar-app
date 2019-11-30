@@ -6,7 +6,7 @@ import { RootState } from './types';
 import sagaMain from './middlewares/sagas';
 
 /*
-    Сonvention: 
+    Сonventions: 
     Action type must be a plane string - https://github.com/piotrwitek/typesafe-actions#tutorial-v4-v5-is-wip-188
      
 */

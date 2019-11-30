@@ -1,7 +1,10 @@
 import request from './utils';
 import { Course, CreateCourse } from '../store/courses/types';
 
-export const getCourses = async () => request.get<Course[]>('/courses').then(({ data }) => data);
+export const fetchCourses = async () => request.get<Course[]>('/courses').then(({ data }) => data);
+
+export const fetchCourse = async (id: string) =>
+    request.get<Course>(`/courses/${id}`).then(({ data }) => data);
 
 export const createCourse = async (course: CreateCourse) =>
     request.post<Course>(`/courses`, course).then(({ data }) => data);
