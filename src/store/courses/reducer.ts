@@ -20,7 +20,7 @@ export default createReducer<Course[], ActionType<typeof import('./actions')>>([
     .handleAction(
         [addCourseAsync.failure, editCourseAsync.failure, removeCourseAsync.failure],
         state => {
-            // TODO: handling
+            // TODO: handling erorrs
             return state;
         },
     );

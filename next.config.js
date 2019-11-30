@@ -4,16 +4,4 @@ const withSass = require('@zeit/next-sass');
 const withCSS = require('@zeit/next-css');
 const withPlugins = require('next-compose-plugins');
 
-module.exports = withPlugins([withCSS, withSass], {
-    exportPathMap() {
-        return {
-            '/': { page: '/' },
-            '/about': { page: '/about' },
-            '/abc': { page: '/abc' },
-            '/other': { page: '/other' },
-            '/there': { page: '/there' },
-            '/sample': { page: '/sample' },
-            '/details': { page: '/details' },
-        };
-    },
-});
+module.exports = withPlugins([withCSS, withSass]);
