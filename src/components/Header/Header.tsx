@@ -1,11 +1,10 @@
-import { Icon, Menu } from 'antd';
+import { Menu } from 'antd';
 import Title from 'antd/lib/typography/Title';
-
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
-import './Header.scss';
 import block from '../../libs/bem';
+import './Header.scss';
 
 const b = block('Header');
 

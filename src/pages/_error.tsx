@@ -1,8 +1,7 @@
-import { Result, Button } from 'antd';
+import { Button, Result } from 'antd';
+import { NextPageContext } from 'next';
 import Error from 'next/error';
 import React from 'react';
-import { ResultStatusType } from 'antd/lib/result';
-import { NextPageContext } from 'next';
 
 interface Props {
     message?: string;
