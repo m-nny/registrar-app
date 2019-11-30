@@ -8,14 +8,15 @@ const LoginForm: React.FC<FormComponentProps> = ({ form }) => {
     const onSubmit: React.FormEventHandler = () => {
         console.log(JSON.stringify(form.getFieldsValue(), null, 4));
     };
-    const style: CSSProperties = {
+    const formContainerStyle: CSSProperties = {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         height: '90vh',
     };
+
     return (
-        <div style={style}>
+        <div style={formContainerStyle}>
             <LoginFormUI onSubmit={onSubmit} form={form} />
         </div>
     );

@@ -56,15 +56,20 @@ const EditCourseDrawer: React.FC<EditCourseViewProps> = ({ form, editCourse, cou
                     },
                 ]}
                 renderBottom={() => (
-                    <Button
-                        loading={loading}
-                        htmlType="submit"
-                        onClick={onSubmit}
-                        type="primary"
-                        style={{ width: '100%', margin: '30px 0 40px 0' }}
-                    >
-                        Edit
-                    </Button>
+                    <>
+                        <Button
+                            loading={loading}
+                            htmlType="submit"
+                            onClick={onSubmit}
+                            type="primary"
+                            style={{ width: '100%' }}
+                        >
+                            Edit
+                        </Button>
+                        <Button href="/" type="link" style={{ width: '100%' }}>
+                            Return
+                        </Button>
+                    </>
                 )}
             />
         </div>

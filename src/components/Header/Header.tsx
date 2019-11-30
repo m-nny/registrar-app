@@ -1,10 +1,11 @@
 import { Icon, Menu } from 'antd';
 import Title from 'antd/lib/typography/Title';
-import block from 'bem-cn';
+
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
 import './Header.scss';
+import block from '../../libs/bem';
 
 const b = block('Header');
 
@@ -12,11 +13,11 @@ const Header: React.FC = () => {
     const router = useRouter();
 
     return (
-        <div className={b().toString()}>
+        <div className={b()}>
             <div className={b('logo')}>
-                <Title level={4}>
-                    <Icon type="github" /> Registrar
-                </Title>
+                <Link href={'/'}>
+                    <Title level={4}>{'{@Registrar@}'}</Title>
+                </Link>
             </div>
             <Menu
                 style={{ borderBottom: 'none', marginBottom: '-7px' }}

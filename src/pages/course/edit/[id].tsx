@@ -4,7 +4,7 @@ import { fetchCourse } from '../../../api/routes';
 import EditCourse from '../../../components/EditCourse/EditCourse.container';
 import Page from '../../../components/Page/Page';
 import { initialCourseList } from '../../../store/courses/actions';
-import { PageCtx } from '../../../types/next';
+import { NextPageWithStore } from '../../../types/next';
 import ErrorPage from '../../_error';
 
 const Index: NextPage<{ error: Error }> = ({ error }) => {
@@ -18,7 +18,7 @@ const Index: NextPage<{ error: Error }> = ({ error }) => {
     );
 };
 
-Index.getInitialProps = async ({ store, query }: PageCtx) => {
+Index.getInitialProps = async ({ store, query }: NextPageWithStore) => {
     const { id } = query;
 
     try {

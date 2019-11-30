@@ -32,6 +32,22 @@ const LoginForm: React.FC<SingInFormProps> = ({ form, onSubmit }) => {
             </div>
         </>
     );
+    const formItems = [
+        {
+            name: 'username',
+            component: <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} />,
+        },
+        {
+            name: 'password',
+            component: (
+                <Input
+                    prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                    type="password"
+                />
+            ),
+        },
+    ];
+
     return (
         <div className="">
             <Title style={{ textAlign: 'center', margin: '60px 0 20px 0' }} level={2}>
@@ -41,26 +57,7 @@ const LoginForm: React.FC<SingInFormProps> = ({ form, onSubmit }) => {
             <FormWrapped
                 form={form}
                 onSubmit={onSubmit}
-                items={[
-                    {
-                        name: 'username',
-
-                        component: (
-                            <Input
-                                prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                            />
-                        ),
-                    },
-                    {
-                        name: 'password',
-                        component: (
-                            <Input
-                                prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                                type="password"
-                            />
-                        ),
-                    },
-                ]}
+                items={formItems}
                 renderBottom={renderBottom}
             />
         </div>

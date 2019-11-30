@@ -53,17 +53,13 @@ const CourseList: React.FC<CourseListProps> = ({
         },
         {
             title: 'Action',
-            render: (text, record) => (
+            render: (_, record) => (
                 <Button.Group>
                     <Button onClick={record.onEdit}>
-                        <Icon type="info-circle" />
-                    </Button>
-
-                    <Button onClick={record.onEdit}>
-                        <Icon type="edit" />
+                        <Icon type="edit" /> Edit
                     </Button>
                     <Button onClick={record.onDelete} type="danger">
-                        <Icon type="delete" />
+                        <Icon type="delete" /> Delete
                     </Button>
                 </Button.Group>
             ),

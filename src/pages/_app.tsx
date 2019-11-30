@@ -6,8 +6,12 @@ import { Provider } from 'react-redux';
 import initStore from '../store';
 import { Store } from '../store/types';
 
+interface Props {
+    store: Store;
+}
+
 export default withRedux(initStore, { debug: true })(
-    class extends App<{ store: Store }> {
+    class extends App<Props> {
         static async getInitialProps({ Component, ctx }: AppContext) {
             const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
             return { pageProps };
