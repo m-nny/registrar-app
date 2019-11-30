@@ -1,56 +1,78 @@
+import { Button, Icon, Progress, Table } from 'antd';
+import { ColumnProps } from 'antd/lib/table';
+import { useRouter } from 'next/router';
 import React from 'react';
-import { Table, Button } from 'antd';
-import { ColumnProps } from 'antd/es/table';
+import { Course } from '../../store/courses/types';
 
-import Course, { CourseEventHandler } from '../../models/Course';
-
-interface CourseRecord extends Course {
+export interface CourseRecord extends Course {
     key: string;
     onEdit: React.MouseEventHandler<HTMLButtonElement>;
     onDelete: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const columns: ColumnProps<CourseRecord>[] = [
-    { title: 'Course ID', dataIndex: 'id' },
-    { title: 'Name', dataIndex: 'name' },
-    { title: 'Instructor', dataIndex: 'instructor' },
-    {
-        title: 'Availability',
-        key: 'availability',
-        render: (_, r) => (
-            <div>
-                {r.filled}/{r.capacity}
-            </div>
-        ),
-    },
-    {
-        title: 'Action',
-        key: 'action',
-        render: (_, r) => (
-            <Button.Group>
-                <Button onClick={r.onEdit}> Edit </Button>
-                <Button onClick={r.onDelete} type="danger">
-                    Delete
-                </Button>
-            </Button.Group>
-        ),
-    },
-];
+export interface CourseListProps {
+    children: Course[];
+    onDelete: (id: string) => void;
+}
 
-type Props = {
-    data: Course[];
-    onEdit: CourseEventHandler;
-    onDelete: CourseEventHandler;
-};
-
-const CourseList: React.FC<Props> = ({ data: originalData, onEdit, onDelete }: Props) => {
+const CourseList: React.FC<CourseListProps> = ({
+    children: originalData,
+    onDelete,
+}: CourseListProps) => {
+    const router = useRouter();
     const data: CourseRecord[] = originalData.map(course => ({
         ...course,
         key: course.id,
-        onEdit: () => onEdit(course),
-        onDelete: () => onDelete(course),
+        onEdit: () => router.push(`/course/edit/${course.id}`),
+        onDelete: () => onDelete(course.id),
     }));
-    return <Table<CourseRecord> columns={columns} dataSource={data} />;
+    const columns: ColumnProps<CourseRecord>[] = [
+        {
+            title: 'Abbreviation',
+            dataIndex: 'abbreviation',
+        },
+        {
+            title: 'Title',
+            dataIndex: 'title',
+        },
+        {
+            title: 'Instructor',
+            dataIndex: 'instructor',
+        },
+        {
+            title: 'Availability',
+            render: (text, record) => (
+                <span>
+                    <Progress
+                        format={() => `${record.enrolled} / ${record.capacity}`}
+                        percent={Math.floor((record.enrolled * 100) / record.capacity)}
+                    />
+                </span>
+            ),
+            width: 300,
+        },
+        {
+            title: 'Action',
+            render: (_, record) => (
+                <Button.Group>
+                    <Button onClick={record.onEdit}>
+                        <Icon type="edit" /> Edit
+                    </Button>
+                    <Button onClick={record.onDelete} type="danger">
+                        <Icon type="delete" /> Delete
+                    </Button>
+                </Button.Group>
+            ),
+            align: 'right',
+        },
+    ];
+    return (
+        <Table<CourseRecord>
+            bodyStyle={{ background: '#fff' }}
+            columns={columns}
+            dataSource={data}
+        />
+    );
 };
 
 export default CourseList;
