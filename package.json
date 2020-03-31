@@ -25,7 +25,7 @@
     "dependencies": {
         "antd": "^3.24.3",
         "bem-cn": "^3.0.1",
-        "next": "9.1.2",
+        "next": "9.3.2",
         "react": "16.11.0",
         "react-dom": "16.11.0",
         "webpack": "^4.41.2",
